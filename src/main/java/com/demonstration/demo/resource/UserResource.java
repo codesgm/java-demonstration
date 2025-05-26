@@ -1,7 +1,8 @@
 package com.demonstration.demo.resource;
 
-import com.demonstration.demo.entities.User;
-import com.demonstration.demo.services.UserService;
+import com.demonstration.demo.dto.user.UserCreateDTO;
+import com.demonstration.demo.dto.user.UserResponseDTO;
+import com.demonstration.demo.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,28 +19,28 @@ public class UserResource {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> insert(@RequestBody User user){
-        User obj = userService.insert(user);
+    public ResponseEntity<UserResponseDTO> insert(@RequestBody UserCreateDTO userCreateDTO) {
+        UserResponseDTO userResponse = userService.insert(userCreateDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).body(obj);
+                .path("/{id}").buildAndExpand(userResponse.getId()).toUri();
+        return ResponseEntity.created(uri).body(userResponse);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
-        User obj = userService.findById(id);
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id) {
+        UserResponseDTO obj = userService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        List<User> list = userService.findAll();
+    public ResponseEntity<List<UserResponseDTO>> findAll() {
+        List<UserResponseDTO> list = userService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> editUser(@PathVariable Long id, @RequestBody User user) {
-        User updatedUser = userService.edit(id, user);
+    public ResponseEntity<UserResponseDTO> editUser(@PathVariable Long id, @RequestBody UserCreateDTO userCreateDTO) {
+        UserResponseDTO updatedUser = userService.edit(id, userCreateDTO);
         return ResponseEntity.ok(updatedUser);
     }
 
