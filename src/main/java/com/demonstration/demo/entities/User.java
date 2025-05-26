@@ -25,7 +25,6 @@ public class User {
     @Column(nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
     @CreationTimestamp
@@ -36,5 +35,9 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 }
 
