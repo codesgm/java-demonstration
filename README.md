@@ -4,7 +4,7 @@
 A documentação dos endpoints foi implementada utilizando o Swagger, para acessá-la, basta iniciar a aplicação e acessar http://localhost:8080/swagger-ui/index.html
 
 Inicializar o projeto
- **docker compose up -d**
+ "**docker compose up -d**"
 
 
 ## JAVA ALGORITIMOS - 
