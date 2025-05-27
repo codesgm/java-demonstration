@@ -3,6 +3,9 @@
 
 A documentação dos endpoints foi implementada utilizando o Swagger, para acessá-la, basta iniciar a aplicação e acessar http://localhost:8080/swagger-ui/index.html
 
+Para visualizar o banco através do PGAdmin senha: postgres
+ http://localhost:8081/browser/
+
 Inicializar o projeto
  "**docker compose up -d**"
 
